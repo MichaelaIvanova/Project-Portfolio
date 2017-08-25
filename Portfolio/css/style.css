@@ -3,6 +3,7 @@ body {
     --main-bg-color: #ffeddb;
     --primary-key-color: #e96f92;
     --secondary-key-color: #54fad4;
+    --sky-gradient: #1b2947, #282f51, #36365a, #443c63, #52426b, #614973, #704f7b, #815482, #935988, #a55d8d, #b86291, #cb6692, #dd6b93, #ec7691, #f18c90, #f3a195, #f3b6a0, #f3c9b2, #f3dcc7, #ffeddb;
     background: var( --main-bg-color);
     margin: 0;
     padding: 0;
@@ -184,7 +185,7 @@ nav {
     right: 0;
     bottom: 0;
     background: #75517d;
-    background: linear-gradient(#1b2947,#282f51,#36365a,#443c63,#52426b,#614973,#704f7b,#815482,#935988,#a55d8d,#b86291,#cb6692,#dd6b93,#ec7691,#f18c90,#f3a195,#f3b6a0,#f3c9b2,#f3dcc7,#ffeddb)
+    background: linear-gradient(var(--sky-gradient));
 }
 
 .Scene-stars {

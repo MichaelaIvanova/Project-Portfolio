@@ -1,6 +1,18 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = null;
+    var curentNode = Model.Content;
+    var root = Umbraco.TypedContentAtRoot().FirstOrDefault();
+    //--main-bg-color: #ffeddb;
+    //--primary-key-color: #e96f92;
+    //--secondary-key-color: #54fad4;
+    //--sky-gradient:
+
+    var backgroundColor = root.HasValue("backgroundColor") ? root.GetPropertyValue<string>("backgroundColor") : "#ffeddb";
+    var primaryColor = root.HasValue("keyColor") ? root.GetPropertyValue<string>("keyColor") : "#e96f92";
+    var secondaryColor = root.HasValue("secondaryColor") ? root.GetPropertyValue<string>("secondaryColor") : "#54fad4";
+    var skyGradient = root.HasValue("skyGreadient") ? root.GetPropertyValue<string>("skyGreadient") : "#1b2947, #282f51, #36365a, #443c63, #52426b, #614973, #704f7b, #815482, #935988, #a55d8d, #b86291, #cb6692, #dd6b93, #ec7691, #f18c90, #f3a195, #f3b6a0, #f3c9b2, #f3dcc7, #ffeddb";
+
 }
 
 
@@ -35,106 +47,115 @@
 <head>
     <title>Lucas Bebber</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/css/style.css?0002" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <style type ="text/css">
+       body {
+           --main-bg-color: @backgroundColor;
+           --primary-key-color: @primaryColor;
+           --secondary-key-color: @secondaryColor;
+           --sky-gradient: @skyGradient;
+       }
+    </style>
 </head>
 <body>
-    <div class="ScrollWrapper">
-        <header class="Header js-HasVH" data-vh="0.75">
-            <nav>
-                <a class="Nav-link" href="#about">
-                    <span>About</span>
-                </a><a class="Nav-link" href="#work">
-                    <span>Work</span>
-                </a><a class="Nav-link" href="#contact">
-                    <span>Contact</span>
-                </a>
-            </nav>
-            <div class="Scene">
-                <div class="Scene-sky" role="presentation"></div>
-                <canvas class="Scene-stars" role="presentation"></canvas>
-                <canvas class="Scene-mountains" data-stop-on-scroll="true" role="presentation"></canvas>
-            </div>
-            <h1 class="Title">
-                <span class="Title-big Title-Center" aria-label="Lucas Bebber"> <span class="Title-Center-left" aria-hidden="true">Lucas </span><span class="Title-Center-right" aria-hidden="true">Bebber</span></span><span class="Title-small Title-Center" aria-label="Creative Developer"><span class="Title-Center-left" aria-hidden="true">Creative </span><span class="Title-Center-right" aria-hidden="true">Developer</span></span>
-                <div class="Title-separator js-Lazyload" role="presentation" data-image="img/separator-green.svg"></div>
-            </h1>
-        </header><main>
-            <div class="container">
-                <section>
-                    <h2 id="about">About</h2>
-                    <p class="heading">Developer working on creating rich, interesting, and at the same time performant and usable experiences for the web.</p>
-                    <p>Focusing on user interfaces, performance, and animation. Also works with back-end development, design, and illustration.</p>
-                    <p>
-                        Working at <a href='http://gardenestudio.com.br'>Garden Estúdio</a>. Based in Rio Grande do Sul - Brazil.
-                    </p>
-                </section><section>
-                    <h2 id="work">Work</h2>
-                    <div class="Works">
-                        <article class="Work">
-                            <div class="Work-text">
-                                <h3 class="Work-title">
-                                    Rain Effect
-                                    <div class="Work-subtitle">Effect/Codrops</div>
-                                </h3>
-                                <p class="Work-description">Relatively lightweight realistic raindrops-on-a-window effect, with WebGL.</p>
-                                <div class="Work-links">
-                                    <a class="Work-link" href="http://tympanus.net/Development/RainEffect/">View demo</a><a class="Work-link" href="http://tympanus.net/codrops/rain-water-effect-experiments/">Read the article</a>
-                                </div>
-                            </div><a href="http://tympanus.net/Development/RainEffect/"><figure class="Work-image js-Lazyload" data-image="img/rain.jpg" data-hires="true" role="presentation"><video class="Work-video" preload="metadata" playsinline="playsinline" webkit-playsinline="webkit-playsinline" loop="loop" muted="muted"><source src="video/rain.mp4" /></video></figure></a>
-                        </article><article class="Work">
-                            <div class="Work-text">
-                                <h3 class="Work-title">
-                                    Heat Haze Effect
-                                    <div class="Work-subtitle">Effect/Codrops</div>
-                                </h3>
-                                <p class="Work-description">
-                                    Relatively lightweight realistic heat haze effect, with WebGL.<br>With minor tweaks, it can also be used to simulate a water effect.
-                                </p>
-                                <div class="Work-links">
-                                    <a class="Work-link" href="http://tympanus.net/Tutorials/HeatDistortionEffect/index3.html">View demo</a><a class="Work-link" href="http://tympanus.net/codrops/animated-heat-distortion-effects-webgl/">Read the article</a>
-                                </div>
-                            </div><a href="http://tympanus.net/Tutorials/HeatDistortionEffect/index3.html"><figure class="Work-image js-Lazyload" data-image="img/haze.jpg" data-hires="true" role="presentation"><video class="Work-video" preload="metadata" playsinline="playsinline" webkit-playsinline="webkit-playsinline" loop="loop" muted="muted"><source src="video/heat.mp4" /></video></figure></a>
-                        </article><article class="Work">
-                            <div class="Work-text">
-                                <h3 class="Work-title">
-                                    Storytelling Map
-                                    <div class="Work-subtitle">Storytelling/Codrops</div>
-                                </h3>
-                                <p class="Work-description">Animated map for interactive storytelling.</p>
-                                <div class="Work-links">
-                                    <a class="Work-link" href="http://tympanus.net/Development/StorytellingMap/">View demo</a><a class="Work-link" href="http://tympanus.net/codrops/animated-map-path-for-interactive-storytelling/">Read the article</a>
-                                </div>
-                            </div><a href="http://tympanus.net/Development/StorytellingMap/"><figure class="Work-image js-Lazyload" data-image="img/map.png" data-hires="true" role="presentation"><video class="Work-video" preload="metadata" playsinline="playsinline" webkit-playsinline="webkit-playsinline" loop="loop" muted="muted"><source src="video/scrollytelling.mp4" /></video></figure></a>
-                        </article><article class="Work">
-                            <div class="Work-text">
-                                <h3 class="Work-title">
-                                    Elastic Progress
-                                    <div class="Work-subtitle">Interface Animation/Codrops</div>
-                                </h3>
-                                <p class="Work-description">SVG animation for a playful download button.</p>
-                                <div class="Work-links">
-                                    <a class="Work-link" href="http://tympanus.net/Development/ElasticProgress/">View demo</a><a class="Work-link" href="http://tympanus.net/codrops/elastic-progress/">Read the article</a>
-                                </div>
-                            </div><a href="http://tympanus.net/Development/ElasticProgress/"><figure class="Work-image js-Lazyload" data-image="img/elastic.png" data-hires="true" role="presentation"><video class="Work-video" preload="metadata" playsinline="playsinline" webkit-playsinline="webkit-playsinline" loop="loop" muted="muted"><source src="video/elastic.mp4" /></video></figure></a>
-                        </article><!-- - var title='Garden Estúdio'--><!-- - var subtitle='Illustration'--><!-- - var description='SVG animation for a playful download button.'--><!-- - var image='img/elastic.png'--><!-- - var video='elastic'--><!-- ---><!-- var links=[--><!-- {label:'View demo',link:'http://tympanus.net/Development/ElasticProgress/'},--><!-- {label:'Read the article',link:"http://tympanus.net/codrops/elastic-progress/"}--><!-- ]--><!-- include work-->
-                    </div>
-                </section><footer>
-                    <h2 id="contact">Contact</h2>
-                    <div class="text-center">
-                        <div class="Contact-heading">You can drop me a line at</div><a class="Email Footer-link"><strong>lucasbbebber</strong> at <strong>gmail</strong> dot com</a>
-                        <div class="Contact-heading">You can find me on</div>
-                        <div class="Social">
-                            <a class="Footer-link Social-link" href="http://codepen.io/lbebber"><strong>codepen</strong>.io/<strong>lbebber</strong></a><br /><a class="Footer-link Social-link" href="http://twitter.com/lucasbebber"><strong>twitter</strong>.com/<strong>lucasbebber</strong></a><br /><a class="Footer-link Social-link" href="http://dribbble.com/lbebber"><strong>dribbble</strong>.com/<strong>lbebber</strong></a>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </main>
-        <div class="Scene--bottom">
-            <canvas class="Scene-mountains Scene-mountains--bottom"></canvas>
+<h1>@root.Name @skyGradient</h1>
+<div class="ScrollWrapper">
+    <header class="Header js-HasVH" data-vh="0.75">
+        <nav>
+            <a class="Nav-link" href="#about">
+                <span>About</span>
+            </a><a class="Nav-link" href="#work">
+                <span>Work</span>
+            </a><a class="Nav-link" href="#contact">
+                <span>Contact</span>
+            </a>
+        </nav>
+        <div class="Scene">
+            <div class="Scene-sky" role="presentation"></div>
+            <canvas class="Scene-stars" role="presentation"></canvas>
+            <canvas class="Scene-mountains" data-stop-on-scroll="true" role="presentation"></canvas>
         </div>
+        <h1 class="Title">
+            <span class="Title-big Title-Center" aria-label="Lucas Bebber"> <span class="Title-Center-left" aria-hidden="true">Lucas </span><span class="Title-Center-right" aria-hidden="true">Bebber</span></span><span class="Title-small Title-Center" aria-label="Creative Developer"><span class="Title-Center-left" aria-hidden="true">Creative </span><span class="Title-Center-right" aria-hidden="true">Developer</span></span>
+            <div class="Title-separator js-Lazyload" role="presentation" data-image="img/separator-green.svg"></div>
+        </h1>
+    </header><main>
+        <div class="container">
+            <section>
+                <h2 id="about">About</h2>
+                <p class="heading">Developer working on creating rich, interesting, and at the same time performant and usable experiences for the web.</p>
+                <p>Focusing on user interfaces, performance, and animation. Also works with back-end development, design, and illustration.</p>
+                <p>
+                    Working at <a href='http://gardenestudio.com.br'>Garden Estúdio</a>. Based in Rio Grande do Sul - Brazil.
+                </p>
+            </section><section>
+                <h2 id="work">Work</h2>
+                <div class="Works">
+                    <article class="Work">
+                        <div class="Work-text">
+                            <h3 class="Work-title">
+                                Rain Effect
+                                <div class="Work-subtitle">Effect/Codrops</div>
+                            </h3>
+                            <p class="Work-description">Relatively lightweight realistic raindrops-on-a-window effect, with WebGL.</p>
+                            <div class="Work-links">
+                                <a class="Work-link" href="http://tympanus.net/Development/RainEffect/">View demo</a><a class="Work-link" href="http://tympanus.net/codrops/rain-water-effect-experiments/">Read the article</a>
+                            </div>
+                        </div><a href="http://tympanus.net/Development/RainEffect/"><figure class="Work-image js-Lazyload" data-image="img/rain.jpg" data-hires="true" role="presentation"><video class="Work-video" preload="metadata" playsinline="playsinline" webkit-playsinline="webkit-playsinline" loop="loop" muted="muted"><source src="video/rain.mp4"/></video></figure></a>
+                    </article><article class="Work">
+                        <div class="Work-text">
+                            <h3 class="Work-title">
+                                Heat Haze Effect
+                                <div class="Work-subtitle">Effect/Codrops</div>
+                            </h3>
+                            <p class="Work-description">
+                                Relatively lightweight realistic heat haze effect, with WebGL.<br>With minor tweaks, it can also be used to simulate a water effect.
+                            </p>
+                            <div class="Work-links">
+                                <a class="Work-link" href="http://tympanus.net/Tutorials/HeatDistortionEffect/index3.html">View demo</a><a class="Work-link" href="http://tympanus.net/codrops/animated-heat-distortion-effects-webgl/">Read the article</a>
+                            </div>
+                        </div><a href="http://tympanus.net/Tutorials/HeatDistortionEffect/index3.html"><figure class="Work-image js-Lazyload" data-image="img/haze.jpg" data-hires="true" role="presentation"><video class="Work-video" preload="metadata" playsinline="playsinline" webkit-playsinline="webkit-playsinline" loop="loop" muted="muted"><source src="video/heat.mp4"/></video></figure></a>
+                    </article><article class="Work">
+                        <div class="Work-text">
+                            <h3 class="Work-title">
+                                Storytelling Map
+                                <div class="Work-subtitle">Storytelling/Codrops</div>
+                            </h3>
+                            <p class="Work-description">Animated map for interactive storytelling.</p>
+                            <div class="Work-links">
+                                <a class="Work-link" href="http://tympanus.net/Development/StorytellingMap/">View demo</a><a class="Work-link" href="http://tympanus.net/codrops/animated-map-path-for-interactive-storytelling/">Read the article</a>
+                            </div>
+                        </div><a href="http://tympanus.net/Development/StorytellingMap/"><figure class="Work-image js-Lazyload" data-image="img/map.png" data-hires="true" role="presentation"><video class="Work-video" preload="metadata" playsinline="playsinline" webkit-playsinline="webkit-playsinline" loop="loop" muted="muted"><source src="video/scrollytelling.mp4"/></video></figure></a>
+                    </article><article class="Work">
+                        <div class="Work-text">
+                            <h3 class="Work-title">
+                                Elastic Progress
+                                <div class="Work-subtitle">Interface Animation/Codrops</div>
+                            </h3>
+                            <p class="Work-description">SVG animation for a playful download button.</p>
+                            <div class="Work-links">
+                                <a class="Work-link" href="http://tympanus.net/Development/ElasticProgress/">View demo</a><a class="Work-link" href="http://tympanus.net/codrops/elastic-progress/">Read the article</a>
+                            </div>
+                        </div><a href="http://tympanus.net/Development/ElasticProgress/"><figure class="Work-image js-Lazyload" data-image="img/elastic.png" data-hires="true" role="presentation"><video class="Work-video" preload="metadata" playsinline="playsinline" webkit-playsinline="webkit-playsinline" loop="loop" muted="muted"><source src="video/elastic.mp4"/></video></figure></a>
+                    </article><!-- - var title='Garden Estúdio'--><!-- - var subtitle='Illustration'--><!-- - var description='SVG animation for a playful download button.'--><!-- - var image='img/elastic.png'--><!-- - var video='elastic'--><!-- ---><!-- var links=[--><!-- {label:'View demo',link:'http://tympanus.net/Development/ElasticProgress/'},--><!-- {label:'Read the article',link:"http://tympanus.net/codrops/elastic-progress/"}--><!-- ]--><!-- include work-->
+                </div>
+            </section><footer>
+                <h2 id="contact">Contact</h2>
+                <div class="text-center">
+                    <div class="Contact-heading">You can drop me a line at</div><a class="Email Footer-link"><strong>lucasbbebber</strong> at <strong>gmail</strong> dot com</a>
+                    <div class="Contact-heading">You can find me on</div>
+                    <div class="Social">
+                        <a class="Footer-link Social-link" href="http://codepen.io/lbebber"><strong>codepen</strong>.io/<strong>lbebber</strong></a><br/><a class="Footer-link Social-link" href="http://twitter.com/lucasbebber"><strong>twitter</strong>.com/<strong>lucasbebber</strong></a><br/><a class="Footer-link Social-link" href="http://dribbble.com/lbebber"><strong>dribbble</strong>.com/<strong>lbebber</strong></a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+    <div class="Scene--bottom">
+        <canvas class="Scene-mountains Scene-mountains--bottom"></canvas>
     </div>
-    <script id="vs" type="x-shader/vertex">
+</div>
+<script id="vs" type="x-shader/vertex">
         attribute vec3 position;void main(){gl_Position=vec4(position,1.0);}
     </script>
 <script id="fs" type="x-shader/fragment">
@@ -211,15 +232,15 @@
     </script>
 <script type="text/javascript">
     colors = {
-        whiteish: '#FFEDDB',
+        whiteish: '@backgroundColor',
         yellow: '#F7F7B6',
-        pink: '#E96F92',
+        pink: '@primaryColor',
         purple: '#75517D',
         blackish: '#1B2947',
-        green: '#54fad4'
+        green: '@secondaryColor'
     }
 
 </script>
-    <script src="/scripts/main.js"></script>
+<script src="/scripts/main.js"></script>
 </body>
 </html>
