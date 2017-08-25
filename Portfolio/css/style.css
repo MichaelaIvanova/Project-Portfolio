@@ -1,6 +1,8 @@
 body {
     /*Declaring colors*/
     --main-bg-color: #ffeddb;
+    --primary-key-color: #e96f92;
+    --secondary-key-color: #54fad4;
     background: var( --main-bg-color);
     margin: 0;
     padding: 0;
@@ -19,7 +21,7 @@ body {
 }
 
 a {
-    color: #e96f92
+    color: var(--primary-key-color);
 }
 
 p.heading {
@@ -57,7 +59,7 @@ nav {
 }
 
 .ContactMenu-link {
-    color: #ffeddb;
+    color: var( --main-bg-color);
     font-family: 'Avenir Next','Segoe ui',Ubuntu,sans-serif;
     text-decoration: none;
     font-weight: bold;
@@ -68,7 +70,7 @@ nav {
 
     .ContactMenu-link span {
         transition: color 80ms,background-position 80ms ease-in;
-        background: linear-gradient(180deg,transparent 94%,#e96f92 94%,#e96f92 100%);
+        background: linear-gradient(180deg,transparent 94%,var(--primary-key-color) 94%,var(--primary-key-color) 100%);
         background-repeat: repeat-x;
         background-position: 0 10px;
         display: inline-block;
@@ -86,11 +88,11 @@ nav {
     .ContactMenu-link:hover span {
         transition: color 80ms,background-position 80ms ease-out;
         background-position: 0 0;
-        color: #e96f92
+        color: var(--primary-key-color)
     }
 
 .Nav-link {
-    color: #ffeddb;
+    color: var( --main-bg-color);
     font-family: 'Avenir Next','Segoe ui',Ubuntu,sans-serif;
     text-decoration: none;
     font-weight: bold;
@@ -112,7 +114,7 @@ nav {
             right: 0;
             height: 3px;
             display: block;
-            background: #e96f92;
+            background: var(--primary-key-color);
             transform: scale(1,0) translate3d(0,-10px,0);
             transition: transform 80ms ease-in
         }
@@ -127,7 +129,7 @@ nav {
 
     .Nav-link:hover span {
         transition: color 80ms;
-        color: #e96f92;
+        color: var(--primary-key-color);
     }
 
         .Nav-link:hover span::after {
@@ -137,11 +139,11 @@ nav {
 
     .Nav-link:active span {
         transition: none;
-        color: #54fad4;
+        color: var(--secondary-key-color);
     }
 
         .Nav-link:active span::after {
-            background-color: #54fad4;
+            background-color: var(--secondary-key-color);
             transition: none;
             transform: scale(1,1.2) translate3d(0,0,0)
         }
@@ -210,7 +212,7 @@ nav {
 
 .Title {
     font-family: 'Avenir Next','Segoe ui',Ubuntu,sans-serif;
-    color: #54fad4;
+    color: var(--secondary-key-color);
     position: absolute;
     top: 50%;
     width: 100%;
@@ -232,7 +234,7 @@ nav {
 .Title-small {
     display: block;
     font-size: .6em;
-    color: #ffeddb;
+    color: var( --main-bg-color);
     height: 1em;
     letter-spacing: .2em;
     margin-bottom: 15px
@@ -388,10 +390,10 @@ h3 {
 
 .Work-link {
     display: inline-block;
-    background: #e96f92;
+    background: var(--primary-key-color);
     font-size: .85em;
     padding: 10px 20px;
-    color: #ffeddb;
+    color: var( --main-bg-color);
     font-family: 'Avenir Next','Segoe ui',Ubuntu,sans-serif;
     text-decoration: none;
     font-weight: bold;
@@ -401,11 +403,11 @@ h3 {
 
     .Work-link:hover {
         background: #1b2947;
-        color: #e96f92
+        color: var(--primary-key-color)
     }
 
     .Work-link:active {
-        background: #54fad4;
+        background: var(--secondary-key-color);
         color: #1b2947;
         transition: none
     }
@@ -446,14 +448,14 @@ h3 {
     font-family: 'Avenir Next','Segoe ui',Ubuntu,sans-serif;
     text-decoration: none;
     color: #1b2947;
-    background: linear-gradient(180deg,transparent 94%,#e96f92 94%,#e96f92 100%);
+    background: linear-gradient(180deg,transparent 94%,var(--primary-key-color) 94%,var(--primary-key-color) 100%);
     background-repeat: repeat-x;
     background-position: 0 10px;
     transition: background-position 80ms ease-in,color 80ms;
 }
 
     .Footer-link strong {
-        color: #e96f92;
+        color: var(--primary-key-color);
         transition: color 80ms
     }
 
@@ -482,7 +484,7 @@ h3 {
     .Scene-sky {
         background-size: 100% 97%;
         background-repeat: repeat-x;
-        background-color: #ffeddb
+        background-color: var( --main-bg-color)
     }
 
     .Nav-link {
