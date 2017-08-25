@@ -1,0 +1,33 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Home>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = null;
+}
+
+   
+<style type="text/css">
+    @if (!string.IsNullOrEmpty(customerKeyColour))
+    {
+        <text>
+            .gateway-item h1                       				{color: @customerKeyColour;}
+    .btn.btn-default.btn-turquoise          			{background-color: @customerKeyColour;}
+    .btn.btn-default.btn-clear.btn-trans:hover  		{color: @customerKeyColour;}
+    .tabs-landing .tab > div                			{background-color: @customerKeyColour;}
+    .whatitmeans h1, .content-section h1                {color: @customerKeyColour;}
+    .wrapper.testimonials                   			{background-color: @customerKeyColour;}
+    .dk-selected:before, .dk-selected:after,
+    .svg .dk-selected:before, .dk-selected:after 		{background-color: @customerKeyColour !important;}
+    .calcTable td.totalRow                  			{background-color: @customerKeyColour;}
+    .calculator .ui-slider.ui-slider-horizontal .ui-slider-bit
+    {background-color: @customerKeyColour;}
+    .faq-wrapper h2                         			{color: @customerKeyColour;}
+    .panel-default > .panel-heading h4.panel-title a    {background-color: @customerKeyColour !important;}
+    .circle h3                              			{color: @customerKeyColour;}
+    .down-arrow                                         {color: @customerKeyColour;}
+    .cost-breakdown-section                             {background-color: @customerKeyColour;}
+    .btn.btn-default.btn-enrol                                          {color: @customerKeyColour; border: 1px solid @customerKeyColour;}
+    .btn.btn-default.btn-enrol:hover                                    {color: #fff; background-color: @customerKeyColour !important;}
+    .feature-item .icon.feature-icon .fa                {color: @customerKeyColour;}
+    .showAllFaqs.btn.btn-default                        {background-color: @customerKeyColour;}
+    </text>
+    }
