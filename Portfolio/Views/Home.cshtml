@@ -12,6 +12,8 @@
     var primaryColor = root.HasValue("keyColor") ? root.GetPropertyValue<string>("keyColor") : "#e96f92";
     var secondaryColor = root.HasValue("secondaryColor") ? root.GetPropertyValue<string>("secondaryColor") : "#54fad4";
     var skyGradient = root.HasValue("skyGreadient") ? root.GetPropertyValue<string>("skyGreadient") : "#1b2947, #282f51, #36365a, #443c63, #52426b, #614973, #704f7b, #815482, #935988, #a55d8d, #b86291, #cb6692, #dd6b93, #ec7691, #f18c90, #f3a195, #f3b6a0, #f3c9b2, #f3dcc7, #ffeddb";
+    var mountainShadow = root.HasValue("mountainShadowColor") ? root.GetPropertyValue<string>("mountainShadowColor") : "#75517D";
+    var mountainDarkColor = root.HasValue("mountainDarkColor") ? root.GetPropertyValue<string>("mountainDarkColor") : "#1B2947";
 
 }
 
@@ -235,8 +237,8 @@
         whiteish: '@backgroundColor',
         yellow: '#F7F7B6',
         pink: '@primaryColor',
-        purple: '#75517D',
-        blackish: '#1B2947',
+        purple: '@mountainShadow',
+        blackish: '@mountainDarkColor',
         green: '@secondaryColor'
     }
 
