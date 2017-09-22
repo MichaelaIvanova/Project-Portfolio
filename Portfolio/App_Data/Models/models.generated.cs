@@ -19,8 +19,8 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "48b624fef0dd264b")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "32afc3b1443fe113")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
@@ -129,7 +129,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 	}
 
-	/// <summary>Page</summary>
+	/// <summary>Section</summary>
 	[PublishedContentModel("page")]
 	public partial class Page : Home
 	{
@@ -270,12 +270,83 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Mountain Dark Color
+		///</summary>
+		[ImplementPropertyType("mountainDarkColor")]
+		public string MountainDarkColor
+		{
+			get { return this.GetPropertyValue<string>("mountainDarkColor"); }
+		}
+
+		///<summary>
+		/// Mountain Shadow Color
+		///</summary>
+		[ImplementPropertyType("mountainShadowColor")]
+		public string MountainShadowColor
+		{
+			get { return this.GetPropertyValue<string>("mountainShadowColor"); }
+		}
+
+		///<summary>
 		/// Secondary Color
 		///</summary>
 		[ImplementPropertyType("secondaryColor")]
 		public string SecondaryColor
 		{
 			get { return this.GetPropertyValue<string>("secondaryColor"); }
+		}
+
+		///<summary>
+		/// Sky Greadient: Paste hex color values comma separated, https://codepen.io/zessx/pen/rDEAl/
+		///</summary>
+		[ImplementPropertyType("skyGreadient")]
+		public string SkyGreadient
+		{
+			get { return this.GetPropertyValue<string>("skyGreadient"); }
+		}
+	}
+
+	/// <summary>Skill</summary>
+	[PublishedContentModel("skill")]
+	public partial class Skill : Home
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "skill";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public Skill(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Skill, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public IHtmlString Content
+		{
+			get { return this.GetPropertyValue<IHtmlString>("content"); }
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("image"); }
 		}
 	}
 

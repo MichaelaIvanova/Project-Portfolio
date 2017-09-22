@@ -1,0 +1,16 @@
+﻿@model IEnumerable<IPublishedContent>
+@{
+  Layout = null;
+}
+
+@if(Model != null && Model.Any())
+{
+    <nav>
+        @foreach (var link in Model)
+        {
+            <a class="Nav-link" href="#@link.Name">
+                <span>@link.Name</span>
+            </a>
+        }
+    </nav>
+}

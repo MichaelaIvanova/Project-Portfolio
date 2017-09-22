@@ -7,7 +7,7 @@ body {
     background: var( --main-bg-color);
     margin: 0;
     padding: 0;
-    color: #1b2947;
+    color: var(--text-color);
     font-family: Georgia,serif;
     font-size: 20px;
     line-height: 1.6;
@@ -334,8 +334,9 @@ h3 {
     font-family: serif;
     font-style: italic;
     font-size: 20px;
-    color: #75517d;
-    font-weight: normal
+    color: var(--text-color);
+    font-weight: normal;
+    display: block;
 }
 
 .Work-text {
@@ -367,11 +368,10 @@ h3 {
     margin-left: 25px;
     position: relative;
     box-shadow: 1px 4px 25px rgba(117,81,125,0.15);
+    background-size: cover; /* <------ */
+    background-repeat: no-repeat;
+    background-position: center center;
 }
-
-    .Work-image img {
-        width: 100%
-    }
 
 .Work-video {
     width: 100%;
@@ -391,7 +391,7 @@ h3 {
 
 .Work-link {
     display: inline-block;
-    background: var(--primary-key-color);
+    background: var(--button-color);
     font-size: .85em;
     padding: 10px 20px;
     color: var( --main-bg-color);
@@ -404,7 +404,7 @@ h3 {
 
     .Work-link:hover {
         background: #1b2947;
-        color: var(--primary-key-color)
+        color: var(--main-bg-color)
     }
 
     .Work-link:active {

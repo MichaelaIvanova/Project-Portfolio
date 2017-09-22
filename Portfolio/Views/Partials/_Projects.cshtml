@@ -1,0 +1,30 @@
+﻿@model IEnumerable<IPublishedContent>
+@{
+  Layout = null;
+}
+
+@if (Model != null && Model.Any())
+{
+    <div class="Works">
+        @foreach (var project in Model)
+        {
+            <article class="Work animated">
+                <div class="Work-text">
+                    <h3 class="Work-title">
+                        @(project.GetPropertyValue<string>("heading"))
+                        <span class="Work-subtitle">@(project.GetPropertyValue<string>("subheading"))</span>
+                    </h3>
+                    <p class="Work-description">@Html.Raw(project.GetPropertyValue<string>("content"))</p>
+                    <div class="Work-links">
+                        <a class="Work-link" href="@(project.GetPropertyValue<string>("codeURL"))">View demo</a>
+                        @if (project.HasValue("codeURL"))
+                        {
+                            <a class="Work-link" href="@(project.GetPropertyValue<string>("demoURL"))">View Code</a>
+                        }
+                    </div>
+                </div>
+                <figure class="Work-image js-Lazyload" style="background-image:url(@(project.GetPropertyValue<IPublishedContent>("image").Url));" data-hires="true" role="presentation"></figure>
+            </article>
+        }
+    </div>
+}

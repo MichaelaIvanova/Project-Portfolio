@@ -1,0 +1,30 @@
+﻿@model IEnumerable<IPublishedContent>
+@{
+  Layout = null;
+}
+
+@if (Model != null && Model.Any())
+{
+
+        foreach (var section in Model)
+        {
+            <h2 id="@(section.Name)">@(section.GetPropertyValue<string>("heading"))</h2>
+            if (section.HasValue("subHeading"))
+            {
+                <p class="heading">@(section.GetPropertyValue<string>("subHeading"))</p>
+            }
+           
+            <p>@Html.Raw(section.GetPropertyValue<string>("content"))</p>
+
+            if (section.Children(c=>c.DocumentTypeAlias == "project").Any())
+            {
+                @Html.Partial("_Projects", section.Children)
+            }
+
+            if (section.Children(c=>c.DocumentTypeAlias == "skill").Any())
+            {
+                @Html.Partial("_Skills", section.Children)
+            }
+        }
+
+}
