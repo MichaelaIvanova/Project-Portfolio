@@ -11,20 +11,22 @@
     <div class="row">
         @foreach (var skill in Model)
         {
-            <div class="col-sm-2 col-md-4 card-holder">
+            var src = string.Empty;
+            if (skill.HasValue("image"))
+            {
+                src = skill.GetPropertyValue<IPublishedContent>("image").Url;
+            }
+            <div class="col-sm-2 col-md-3">
                 <div class="skill-card">
                     <header class="skill-card__header">
-                        <img class="skill-card__icon" src="https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg" alt="HTML5 Logo"/>
+                        <img class="skill-card__icon" src="@src" alt="Logo"/>
                     </header>
                     <div class="skill-card__body">
-                        <h3 class="skill-card__title">html</h3>
-                        <span class="skill-card__duration">6 ans d'expérience</span>
-                        <ul class="skill-card__knowledge">
-                            <li>HTML5</li>
-                            <li>Sémantique</li>
-                            <li>SVG</li>
-                            <li>Canvas</li>
-                        </ul>
+                        <h3 class="skill-card__title">@(skill.GetPropertyValue<string>("heading"))</h3>
+                        <span class="skill-card__duration">@(skill.GetPropertyValue<string>("years"))+ years of experience</span>
+                        <div class="skill-card__knowledge">
+                           @Html.Raw(skill.GetPropertyValue<string>("content"))
+                        </div>
                     </div>
                 </div>
             </div>
